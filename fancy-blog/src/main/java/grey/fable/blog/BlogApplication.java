@@ -1,5 +1,6 @@
 package grey.fable.blog;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 2024/11/25 4:14
  */
 @SpringBootApplication
+@MapperScan("grey.fable.blog.**.dao")
 public class BlogApplication {
     public static void main(String[] args) {
         SpringApplication.run(BlogApplication.class, args);

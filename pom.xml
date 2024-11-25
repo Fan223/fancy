@@ -18,5 +18,6 @@
     <modules>
         <module>fancy-blog</module>
         <module>fancy-vocabulary</module>
+        <module>fancy-common</module>
     </modules>
 </project>
