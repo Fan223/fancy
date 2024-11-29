@@ -1,5 +1,6 @@
 package grey.fable.vocabulary;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @ComponentScan("grey.fable")
+@MapperScan("grey.fable.vocabulary.**.dao")
 public class VocabularyApplication {
     public static void main(String[] args) {
         SpringApplication.run(VocabularyApplication.class, args);

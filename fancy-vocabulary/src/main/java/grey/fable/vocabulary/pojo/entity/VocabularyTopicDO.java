@@ -1,4 +1,4 @@
-package grey.fable.blog.pojo.entity;
+package grey.fable.vocabulary.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -9,14 +9,14 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 标签实体类.
+ * 词汇主题关联实体类.
  *
  * @author GreyFable
- * @since 2024/11/28 11:21
+ * @since 2024/11/29 13:46
  */
 @Data
-@TableName("tag")
-public class TagDO {
+@TableName("vocabulary_topic")
+public class VocabularyTopicDO {
 
     /**
      * 主键ID.
@@ -25,9 +25,14 @@ public class TagDO {
     private Long id;
 
     /**
-     * 名称.
+     * 单词ID.
      */
-    private String name;
+    private Long wordId;
+
+    /**
+     * 主题ID.
+     */
+    private String topicId;
 
     /**
      * 是否删除标志, 0:未删除, 1:已删除.

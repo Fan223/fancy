@@ -9,14 +9,14 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 标签实体类.
+ * 文章标签关联实体类.
  *
  * @author GreyFable
- * @since 2024/11/28 11:21
+ * @since 2024/11/29 0:45
  */
 @Data
-@TableName("tag")
-public class TagDO {
+@TableName("article_tag")
+public class ArticleTagDO {
 
     /**
      * 主键ID.
@@ -25,9 +25,14 @@ public class TagDO {
     private Long id;
 
     /**
-     * 名称.
+     * 文章ID.
      */
-    private String name;
+    private Long articleId;
+
+    /**
+     * 标签ID.
+     */
+    private Long tagId;
 
     /**
      * 是否删除标志, 0:未删除, 1:已删除.

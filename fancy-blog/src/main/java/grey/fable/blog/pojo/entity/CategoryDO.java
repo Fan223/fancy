@@ -18,20 +18,41 @@ import java.time.LocalDateTime;
 @TableName("category")
 public class CategoryDO {
 
+    /**
+     * 主键ID.
+     */
     @TableId
     private Long id;
 
+    /**
+     * 名称.
+     */
     private String name;
 
+    /**
+     * 排序.
+     */
     private Integer sortOrder;
 
+    /**
+     * 状态.
+     */
     private Integer state;
 
+    /**
+     * 是否删除标志, 0:未删除, 1:已删除.
+     */
     @TableLogic
     @TableField("is_deleted")
     private Integer deleted;
 
+    /**
+     * 创建时间.
+     */
     private LocalDateTime createTime;
 
+    /**
+     * 更新时间.
+     */
     private LocalDateTime updateTime;
 }

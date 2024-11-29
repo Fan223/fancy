@@ -1,4 +1,4 @@
-package grey.fable.blog.pojo.entity;
+package grey.fable.vocabulary.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -9,17 +9,17 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 标签实体类.
+ * 主题实体类.
  *
  * @author GreyFable
- * @since 2024/11/28 11:21
+ * @since 2024/11/29 13:45
  */
 @Data
-@TableName("tag")
-public class TagDO {
+@TableName("topic")
+public class TopicDO {
 
     /**
-     * 主键ID.
+     * 主题ID.
      */
     @TableId
     private Long id;

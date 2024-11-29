@@ -18,22 +18,46 @@ import java.time.LocalDateTime;
 @TableName("article")
 public class ArticleDO {
 
+    /**
+     * 主键ID.
+     */
     @TableId
     private Long id;
 
+    /**
+     * 标题.
+     */
     private String title;
 
+    /**
+     * 内容.
+     */
     private String content;
 
+    /**
+     * 封面.
+     */
     private String cover;
 
+    /**
+     * 状态.
+     */
     private Integer state;
 
+    /**
+     * 是否删除标志, 0:未删除, 1:已删除.
+     */
     @TableLogic
     @TableField("is_deleted")
     private Integer deleted;
 
+    /**
+     * 创建时间.
+     */
     private LocalDateTime createTime;
 
+    /**
+     * 更新时间.
+     */
     private LocalDateTime updateTime;
 }
