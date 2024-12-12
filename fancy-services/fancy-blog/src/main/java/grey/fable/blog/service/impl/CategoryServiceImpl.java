@@ -3,14 +3,12 @@ package grey.fable.blog.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import grey.fable.base.text.StringUtils;
-import grey.fable.base.util.IdUtils;
 import grey.fable.blog.dao.CategoryDAO;
 import grey.fable.blog.pojo.entity.CategoryDO;
 import grey.fable.blog.pojo.query.CategoryQuery;
 import grey.fable.blog.service.CategoryService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -43,17 +41,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public int addCategory(CategoryDO categoryDO) {
-        LocalDateTime now = LocalDateTime.now();
-
-        categoryDO.setId(IdUtils.getSnowflakeNextId());
-        categoryDO.setCreateTime(now);
-        categoryDO.setUpdateTime(now);
         return categoryDAO.insert(categoryDO);
     }
 
     @Override
     public int updateCategory(CategoryDO categoryDO) {
-        categoryDO.setUpdateTime(LocalDateTime.now());
         return categoryDAO.updateById(categoryDO);
     }
 

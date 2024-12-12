@@ -3,14 +3,12 @@ package grey.fable.blog.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import grey.fable.base.text.StringUtils;
-import grey.fable.base.util.IdUtils;
 import grey.fable.blog.dao.ArticleDAO;
 import grey.fable.blog.pojo.entity.ArticleDO;
 import grey.fable.blog.pojo.query.ArticleQuery;
 import grey.fable.blog.service.ArticleService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
@@ -43,16 +41,6 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Boolean saveArticle(ArticleDO articleDO) {
-        LocalDateTime now = LocalDateTime.now();
-        articleDO.setUpdateTime(now);
-
-        Optional<Long> id = Optional.ofNullable(articleDO.getId());
-        id.ifPresentOrElse(aLong -> {
-        }, () -> {
-            articleDO.setId(IdUtils.getSnowflakeNextId());
-            articleDO.setCreateTime(now);
-        });
-
         Optional<String> cover = Optional.ofNullable(articleDO.getCover());
         articleDO.setCover(cover.orElse("https://img.fan223.cn/wallpaper/12.jpg"));
         return articleDAO.insertOrUpdate(articleDO);

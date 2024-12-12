@@ -2,14 +2,12 @@ package grey.fable.vocabulary.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import grey.fable.base.text.StringUtils;
-import grey.fable.base.util.IdUtils;
 import grey.fable.vocabulary.dao.TopicDAO;
 import grey.fable.vocabulary.pojo.entity.TopicDO;
 import grey.fable.vocabulary.pojo.query.TopicQuery;
 import grey.fable.vocabulary.service.TopicService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -36,17 +34,11 @@ public class TopicServiceImpl implements TopicService {
 
     @Override
     public Integer addTopic(TopicDO topicDO) {
-        LocalDateTime now = LocalDateTime.now();
-
-        topicDO.setId(IdUtils.getSnowflakeNextId());
-        topicDO.setCreateTime(now);
-        topicDO.setUpdateTime(now);
         return topicDAO.insert(topicDO);
     }
 
     @Override
     public Integer updateTopic(TopicDO topicDO) {
-        topicDO.setUpdateTime(LocalDateTime.now());
         return topicDAO.updateById(topicDO);
     }
 

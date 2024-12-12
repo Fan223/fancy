@@ -33,16 +33,4 @@ public class MybatisPlusAutoConfiguration {
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
         return interceptor;
     }
-
-//    /**
-//     * 自动填充字段.
-//     *
-//     * @return {@link FancyMetaObjectHandler}
-//     * @author GreyFable
-//     * @since 2024/12/10 11:15
-//     */
-//    @Bean
-//    public FancyMetaObjectHandler fancyMetaObjectHandler() {
-//        return new FancyMetaObjectHandler();
-//    }
 }

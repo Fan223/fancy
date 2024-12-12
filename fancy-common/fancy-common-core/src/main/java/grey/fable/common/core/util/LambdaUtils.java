@@ -14,6 +14,14 @@ public final class LambdaUtils {
     private LambdaUtils() {
     }
 
+    /**
+     * 获取 Lambda 表达式 Getter/Setter 方法对应的字段名称.
+     *
+     * @param func {@link Func1}
+     * @return {@link String}
+     * @author GreyFable
+     * @since 2024/12/11 9:26
+     */
     public static <T> String getFieldName(Func1<T, ?> func) {
         return LambdaUtil.getFieldName(func);
     }

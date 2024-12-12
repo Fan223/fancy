@@ -3,14 +3,12 @@ package grey.fable.blog.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import grey.fable.base.text.StringUtils;
-import grey.fable.base.util.IdUtils;
 import grey.fable.blog.dao.TagDAO;
 import grey.fable.blog.pojo.entity.TagDO;
 import grey.fable.blog.pojo.query.TagQuery;
 import grey.fable.blog.service.TagService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -42,17 +40,11 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public Integer addTag(TagDO tagDO) {
-        LocalDateTime now = LocalDateTime.now();
-
-        tagDO.setId(IdUtils.getSnowflakeNextId());
-        tagDO.setCreateTime(now);
-        tagDO.setUpdateTime(now);
         return tagDAO.insert(tagDO);
     }
 
     @Override
     public Integer updateTag(TagDO tagDO) {
-        tagDO.setUpdateTime(LocalDateTime.now());
         return tagDAO.updateById(tagDO);
     }
 
