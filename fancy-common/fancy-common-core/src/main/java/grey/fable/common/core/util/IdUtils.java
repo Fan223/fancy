@@ -6,10 +6,7 @@ package grey.fable.common.core.util;
  * @author GreyFable
  * @since 2024/12/11 9:23
  */
-public final class IdUtils {
-
-    private IdUtils() {
-    }
+public record IdUtils() {
 
     /**
      * 获取雪花ID.

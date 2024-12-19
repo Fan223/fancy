@@ -9,10 +9,7 @@ import cn.hutool.core.lang.func.LambdaUtil;
  * @author GreyFable
  * @since 2024/12/10 16:42
  */
-public final class LambdaUtils {
-
-    private LambdaUtils() {
-    }
+public record LambdaUtils() {
 
     /**
      * 获取 Lambda 表达式 Getter/Setter 方法对应的字段名称.
