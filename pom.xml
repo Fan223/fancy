@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>grey.fable</groupId>
+        <artifactId>grey-fable-dependencies</artifactId>
+        <version>2.0.0</version>
+        <relativePath/>
+    </parent>
+
+    <artifactId>fancy</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>fancy</name>
+    <description>Fancy.</description>
+    <url>https://github.com/Fan223/fancy</url>
+    <inceptionYear>2022</inceptionYear>
+
+    <developers>
+        <developer>
+            <id>Fan</id>
+            <name>GreyFable</name>
+            <email>fanj.zh@foxmail.com</email>
+            <url>https://fan223.cn</url>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:https://github.com/Fan223/fancy.git</connection>
+        <developerConnection>scm:git:git@github.com:Fan223/fancy.git</developerConnection>
+        <url>https://github.com/Fan223/fancy</url>
+        <tag/>
+    </scm>
+
+    <modules>
+        <module>fancy-common</module>
+        <module>fancy-services</module>
+        <module>fancy-gateway</module>
+    </modules>
+</project>
