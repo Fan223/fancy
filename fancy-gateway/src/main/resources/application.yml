@@ -1,0 +1,13 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: fancy-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: blog
+          uri: http://localhost:8001
+          predicates:
+            - Path=/blog/**

@@ -10,4 +10,38 @@
     <artifactId>fancy-common-mybatis-plus</artifactId>
     <packaging>jar</packaging>
     <name>fancy-common-mybatis-plus</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>grey.fable</groupId>
+            <artifactId>fancy-common-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <!-- MyBatis-Plus Spring Boot3 Starter -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-jsqlparser</artifactId>
+        </dependency>
+
+        <!-- P6spy Spring Boot Starter -->
+        <dependency>
+            <groupId>com.github.gavlyukovskiy</groupId>
+            <artifactId>p6spy-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- MyBatis-Plus Generator -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+    </dependencies>
 </project>
