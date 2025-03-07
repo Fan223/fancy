@@ -1,0 +1,2 @@
+grey.fable.common.redis.RedisAutoConfiguration
+grey.fable.common.redis.support.RedisClient

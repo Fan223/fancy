@@ -1,0 +1,27 @@
+server:
+  port: 8001
+  servlet:
+    context-path: /blog
+
+spring:
+  application:
+    name: fancy-blog
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/fancy_blog?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&connectTimeout=5000&socketTimeout=10000
+    username: username
+    password: password
+  data:
+    redis:
+      host: 127.0.0.1
+      password: password
+
+logging:
+  level:
+    root: info
+  file:
+    name: fancy-blog.log
+  logback:
+    rollingpolicy:
+      max-file-size: 128MB
+      max-history: 7
