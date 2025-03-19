@@ -54,14 +54,14 @@ public class RedisAutoConfiguration {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
 
-        // 字符串
+        // 字符串序列化
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-        // JSON
+        // JSON 序列化
         GenericJackson2JsonRedisSerializer genericJackson2JsonRedisSerializer = new GenericJackson2JsonRedisSerializer();
 
-        // 默认键值序列化类型
+        // 默认 Key-Value 序列化类型
         redisTemplate.setDefaultSerializer(genericJackson2JsonRedisSerializer);
-        // 重设键的序列化类型
+        // 重设 Key 的序列化类型
         redisTemplate.setKeySerializer(stringRedisSerializer);
         redisTemplate.setHashKeySerializer(stringRedisSerializer);
 

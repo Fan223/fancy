@@ -3,6 +3,7 @@ package grey.fable.blog.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import grey.fable.base.collection.CollectionUtils;
 import grey.fable.base.map.MapUtils;
 import grey.fable.base.text.StringUtils;
 import grey.fable.blog.dao.ArticleDAO;
@@ -13,6 +14,7 @@ import grey.fable.common.redis.support.RedisClient;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
@@ -38,10 +40,23 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Page<ArticleDO> pageArticles(ArticleQuery query) {
-        LambdaQueryWrapper<ArticleDO> wrapper = new LambdaQueryWrapper<>();
+        LambdaQueryWrapper<ArticleDO> wrapper = new LambdaQueryWrapper<>(ArticleDO.class);
         wrapper.eq(StringUtils.isNotBlank(query.getState()), ArticleDO::getState, query.getState())
-                .like(StringUtils.isNotBlank(query.getTitle()), ArticleDO::getTitle, query.getTitle());
+                .like(StringUtils.isNotBlank(query.getTitle()), ArticleDO::getTitle, query.getTitle())
+                .in(CollectionUtils.isNotEmpty(query.getIds()), ArticleDO::getId, query.getIds())
+                .select(articleDO -> !articleDO.getProperty().equals("content"))
+                .orderByAsc(ArticleDO::getView);
         return articleDAO.selectPage(new Page<>(query.getCurrentPage(), query.getPageSize()), wrapper);
+    }
+
+    @Override
+    public List<ArticleDO> listRecommendArticles() {
+        LambdaQueryWrapper<ArticleDO> wrapper = new LambdaQueryWrapper<>(ArticleDO.class);
+        wrapper.eq(ArticleDO::getState, 2)
+                .select(articleDO -> !articleDO.getProperty().equals("content"))
+                .orderByDesc(ArticleDO::getView)
+                .last("limit 3");
+        return articleDAO.selectList(wrapper);
     }
 
     @Override
@@ -54,6 +69,12 @@ public class ArticleServiceImpl implements ArticleService {
         CompletableFuture.runAsync(() -> redisClient.hIncrement(ARTICLE_VIEWS_KEY, id, 1));
     }
 
+    /**
+     * 定时同步文章浏览量到数据库, 每天 4 点执行.
+     *
+     * @author GreyFable
+     * @since 2025/3/7 17:13
+     */
     @Scheduled(cron = "0 0 4 * * ?")
     public void syncView() {
         Map<Object, Object> map = redisClient.hEntries(ARTICLE_VIEWS_KEY);

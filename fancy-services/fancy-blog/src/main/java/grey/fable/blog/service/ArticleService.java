@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import grey.fable.blog.pojo.entity.ArticleDO;
 import grey.fable.blog.pojo.query.ArticleQuery;
 
+import java.util.List;
+
 /**
  * 文章接口.
  *
@@ -13,6 +15,8 @@ import grey.fable.blog.pojo.query.ArticleQuery;
 public interface ArticleService {
 
     Page<ArticleDO> pageArticles(ArticleQuery articleQuery);
+
+    List<ArticleDO> listRecommendArticles();
 
     ArticleDO getArticle(String id);
 

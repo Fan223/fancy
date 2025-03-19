@@ -1,9 +1,6 @@
 package grey.fable.common.mybatis.plus.pojo.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -16,9 +13,9 @@ import java.time.LocalDateTime;
 public class MetaDO {
 
     /**
-     * 主键ID.
+     * 主键 ID, 自定义填充.
      */
-    @TableId
+    @TableId(type = IdType.INPUT)
     private Long id;
 
     /**

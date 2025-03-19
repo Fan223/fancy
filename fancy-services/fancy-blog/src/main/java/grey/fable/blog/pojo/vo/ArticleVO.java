@@ -39,12 +39,12 @@ public class ArticleVO {
     /**
      * 浏览量.
      */
-    private String view;
+    private Long view;
 
     /**
      * 状态.
      */
-    private String state;
+    private Integer state;
 
     /**
      * 更新时间.

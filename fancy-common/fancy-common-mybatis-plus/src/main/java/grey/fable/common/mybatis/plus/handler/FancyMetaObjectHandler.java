@@ -19,7 +19,7 @@ public class FancyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         // 自动填充主键ID.
-        this.strictInsertFill(metaObject, LambdaUtils.getFieldName(MetaDO::getId), Long.class, IdUtils.getSnowflakeId());
+        this.setFieldValByName(LambdaUtils.getFieldName(MetaDO::getId), IdUtils.getSnowflakeId(), metaObject);
         // 自动填充创建和更新时间.
         LocalDateTime now = LocalDateTime.now();
         this.strictInsertFill(metaObject, LambdaUtils.getFieldName(MetaDO::getCreateTime), LocalDateTime.class, now);
